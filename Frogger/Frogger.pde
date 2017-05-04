@@ -1,15 +1,16 @@
 int frogX= 200;
 int frogY= 370;
-car Jeep= new car(300, 300, 100, 10, 10, 10, 10); 
-
-
+car Jeep= new car(300, 300, 75, 25, 1, 1, 10,10); 
+car Ford= new car(300, 250, 75, 25, 10, 10, 10,10); 
+car Chevy= new car(300, 125, 75, 25, 10, 10, 10,10);
+car Honda= new car(300, 50, 75, 25, 10, 10, 10,10);
 void setup() {
   size(400, 400);
 }
 void draw() {
   background(0, 25, 50);
   fill(0, 255, 0);
-  ellipse(frogX, frogY, 50, 50);
+  ellipse(frogX, frogY, 20, 20);
   if  (frogY==400) {
     frogY=frogY-30;
   }
@@ -21,6 +22,13 @@ void draw() {
   }
   Jeep. display();
   Jeep.MoveLeft();
+  Jeep.intersect();
+  Ford.display();
+  Ford.MoveRight();
+  Chevy.display();
+  Chevy.MoveLeft();
+  Honda.display();
+  Honda.MoveRight();
 }
 void keyPressed()
 {
@@ -51,13 +59,16 @@ class car {
   int g;
   int b;
   int fast;
-  car(int x1, int y1, int w1, int r1, int g1, int b1, int speed) {
+  car(int x1, int y1, int w1, int h1,int r1, int g1, int b1, int speed) {
     x = x1;
+    
     y = y1;
     w = w1;
+     h = h1;
     r = r1;
     g = g1;
     b = b1;
+   
     fast = speed;
   }
 
@@ -84,13 +95,25 @@ class car {
   void display() 
   {
     fill(0, 255, 0);
-    rect( x, y, w, 50);
+    rect( x, y, w, h);
   }
   void MoveLeft() {
     x=fast;
     fast=fast-10;
-   if (fast==0){
-    fast=fast+300; 
+   if (fast==-100){
+    fast=fast+400; 
+   }}
+   void MoveRight() {
+    x=fast;
+    fast=fast+10;
+   if (fast==400){
+    fast=fast-400; 
    }
-  }
-}
+  void intersect() {
+   boolean intersects(Car car) {
+if ((frogY > car.getY() && frogY < car.getY()+50) && (frogX > car.getX() && frogX < car.getX()+car.getSize()))
+          return true;
+    else 
+        return false;
+
+  }}
