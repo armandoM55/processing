@@ -22,13 +22,22 @@ void draw() {
   }
   Jeep. display();
   Jeep.MoveLeft();
-  Jeep.intersect();
+  Jeep.intersects();
   Ford.display();
   Ford.MoveRight();
+  Ford.intersects();
   Chevy.display();
   Chevy.MoveLeft();
+  Chevy.intersects();
   Honda.display();
   Honda.MoveRight();
+  Honda.intersects();
+  return; 
+ if(true){
+  frogX=frogX+30; 
+ }
+
+ 
 }
 void keyPressed()
 {
@@ -108,12 +117,12 @@ class car {
     fast=fast+10;
    if (fast==400){
     fast=fast-400; 
-   }
-  void intersect() {
-   boolean intersects(Car car) {
-if ((frogY > car.getY() && frogY < car.getY()+50) && (frogX > car.getX() && frogX < car.getX()+car.getSize()))
+   }}
+ // void Intersect(){ 
+    boolean intersects() {
+if ((frogY > y && frogY < y+50) && (frogX > x && frogX < x+w))
           return true;
     else 
         return false;
-
+   
   }}
