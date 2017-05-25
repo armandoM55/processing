@@ -1,5 +1,6 @@
 int frogX= 200;
 int frogY= 370;
+boolean Return = false;
 car Jeep= new car(300, 300, 75, 25, 1, 1, 10,10); 
 car Ford= new car(300, 250, 75, 25, 10, 10, 10,10); 
 car Chevy= new car(300, 125, 75, 25, 10, 10, 10,10);
@@ -20,22 +21,28 @@ void draw() {
   if (frogX==400) {
     frogX=frogX-10;
   }
+  if(frogY==0){
+   text("you win",200,200); 
+  }
   Jeep. display();
   Jeep.MoveLeft();
   Jeep.intersects();
+  Jeep.hitbox();
   Ford.display();
   Ford.MoveRight();
   Ford.intersects();
+  Ford.hitbox();
   Chevy.display();
   Chevy.MoveLeft();
   Chevy.intersects();
+  Chevy.hitbox();
   Honda.display();
   Honda.MoveRight();
   Honda.intersects();
-  return; 
- if(true){
-  frogX=frogX+30; 
- }
+  Honda.hitbox();
+  return;
+  
+ 
 
  
 }
@@ -53,7 +60,7 @@ void keyPressed()
       frogX=frogX+10;
     } else if (keyCode == LEFT)
     {
-      frogX=frogX-10;
+      frogX=frogX-25;
     }
   }
 }
@@ -118,11 +125,19 @@ class car {
    if (fast==400){
     fast=fast-400; 
    }}
- // void Intersect(){ 
+ 
     boolean intersects() {
 if ((frogY > y && frogY < y+50) && (frogX > x && frogX < x+w))
-          return true;
+          return  true;
     else 
         return false;
    
-  }}
+  }
+void hitbox() {
+  
+  if(intersects()){
+   frogX= 200; 
+   frogY= 370;
+  } 
+  
+}}
