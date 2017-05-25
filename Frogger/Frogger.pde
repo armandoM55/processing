@@ -15,14 +15,18 @@ void draw() {
   if  (frogY==400) {
     frogY=frogY-30;
   }
-  if (frogX==0) {
+  if (frogX<=0) {
     frogX=frogX+10;
   }
-  if (frogX==400) {
+  if (frogX>=400) {
     frogX=frogX-10;
   }
+  if(frogY<=0){
+   frogY= frogY+1; 
+  }
   if(frogY==0){
-   text("you win",200,200); 
+    text("you win",200,200); 
+    textSize(100);
   }
   Jeep. display();
   Jeep.MoveLeft();
@@ -116,7 +120,7 @@ class car {
   void MoveLeft() {
     x=fast;
     fast=fast-10;
-   if (fast==-100){
+   if (fast<=-80){
     fast=fast+400; 
    }}
    void MoveRight() {
@@ -127,7 +131,7 @@ class car {
    }}
  
     boolean intersects() {
-if ((frogY > y && frogY < y+50) && (frogX > x && frogX < x+w))
+if ((frogY > y && frogY < y+57) && (frogX > x && frogX < x+w))
           return  true;
     else 
         return false;
